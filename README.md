@@ -4,7 +4,7 @@
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](CONTRIBUTING.md)
 
-Our repository demonstrating how to build and deploy sophisticated algorithmic trading solutions using modern AI, from multi-agent systems to production-ready execution frameworks.
+Our repository for demonstrating how to build and deploy sophisticated algorithmic trading solutions using modern AI, from multi-agent systems to production-ready execution frameworks.
 ---
 
 ## 🎯 Objective
