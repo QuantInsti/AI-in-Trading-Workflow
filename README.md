@@ -73,7 +73,7 @@ Stay tuned for updates!
 
 ## 🤝 How to Contribute
 
-Contributions are welcome! Whether it's reporting a bug, suggesting a new feature, improving documentation, or submitting a new implementation, your help is appreciated. Please refer to the `CONTRIBUTING.md` guide within the `ib_stock_setup` directory for initial guidelines.
+Contributions are welcome! Whether it's reporting a bug, suggesting a new feature, improving documentation, or submitting a new implementation, your help is appreciated. Please refer to the `CONTRIBUTING.md` guide within this main directory for initial guidelines.
 
 ## 📄 License
 
