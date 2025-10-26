@@ -77,4 +77,4 @@ Contributions are welcome! Whether it's reporting a bug, suggesting a new featur
 
 ## 📄 License
 
-This project is licensed under the Apache License 2.0. See the `LICENSE.txt` file in the `ib_stock_setup` directory for details.
+This project is licensed under the Apache License 2.0. See the `LICENSE.txt` file in this directory for details.
