@@ -27,7 +27,7 @@ This project will be updated with new implementations and tutorials to reflect a
 This repository is organized into modules based on the AI tools and platforms they demonstrate. We will continue to expand this structure as we incorporate new technologies.
 
 ### 1. Gemini CLI
-- **Location**: `gemini_cli/`
+- **Location**: `[gemini_cli/](https://github.com/QuantInsti/AI-in-Trading-Workflow/tree/main/gemini_cli)`
 - **Description**: This section contains the core end-to-end implementation and related guides.
     - **Production Trading Framework (`ib_stock_setup`)**: A professional Python framework for automated stock trading via the Interactive Brokers (IB) API.
     - **AI-Powered Strategy (`AI_strategy.py`)**: A pluggable multi-agent strategy using Gemini that trades based on news sentiment and volatility analysis.
