@@ -1,0 +1,16 @@
+LICENSE.txt
+README.md
+pyproject.toml
+src/ib_stock_setup/create_database.py
+src/ib_stock_setup/engine.py
+src/ib_stock_setup/ib_functions.py
+src/ib_stock_setup/setup.py
+src/ib_stock_setup/setup_for_contract_details.py
+src/ib_stock_setup/setup_for_download_data.py
+src/ib_stock_setup/setup_functions.py
+src/ib_stock_setup/trading_functions.py
+src/ib_stock_setup.egg-info/PKG-INFO
+src/ib_stock_setup.egg-info/SOURCES.txt
+src/ib_stock_setup.egg-info/dependency_links.txt
+src/ib_stock_setup.egg-info/requires.txt
+src/ib_stock_setup.egg-info/top_level.txt

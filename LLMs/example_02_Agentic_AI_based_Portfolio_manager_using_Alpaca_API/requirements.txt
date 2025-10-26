@@ -1,0 +1,15 @@
+langgraph
+langchain
+langchain_core
+langchain-google-genai
+python-dotenv
+pandas
+numpy
+tavily-python
+alpaca-trade-api
+scikit-learn
+ta
+pytz
+openpyxl
+matplotlib
+pyfolio-reloaded
