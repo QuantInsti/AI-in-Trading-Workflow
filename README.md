@@ -40,8 +40,12 @@ This repository is organized into modules based on the AI tools and platforms th
 ### 3. LLMs
 - **Location**: [LLMs/](https://github.com/QuantInsti/AI-in-Trading-Workflow/tree/main/LLMs)
 - **Description**: Detailed examples on how to create an agentic-based portfolio manager and an MCP server using the Interactive Brokers API with LLMs!
+
+### 4. Dify
+- **Location**: [Dify/](https://github.com/QuantInsti/AI-in-Trading-Workflow/tree/main/Dify)
+- **Description**: This section contains an example using the Dify platform to build an AI-driven strategy backtesting script builder. The tutorial demonstrates how to construct an Agent workflow through a visual interface to create backtesting scripts.
   
-### 4. More Curated List of AI Trading Tools coming soon!
+### 5. More Curated List of AI Trading Tools coming soon!
 - We're currently engaged in creating more use cases of AI tools and platforms. Stay tuned!
 
 ---
