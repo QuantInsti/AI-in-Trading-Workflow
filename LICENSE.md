@@ -7,14 +7,14 @@ Contact: contact@quantinsti.com
 
 1. ## **Definitions**
 
-   “Work” means the collection of code, data, examples, documentation, scripts, workflows, AI/ML models, or other materials made available in this repository or accompanying files.  
-   “Licensor” means QuantInsti Quantitative Learning Pvt. Ltd. (“QuantInsti”), including its affiliates and authorized contributors.  
-   “User” or “You” means any individual, researcher, developer, or organization accessing or using the Work.  
-   “Non-Commercial Use” means use of the Work solely for educational, research, or personal learning purposes, without direct or indirect monetary gain, commercial deployment, or inclusion in a paid product or service.  
-   “Commercial Use” means any use intended for or resulting in commercial advantage, revenue generation, consulting, paid access, or resale, including but not limited to deployment in proprietary software, trading platforms, or paid data services.  
-   “Derivative Work” means any work based upon, adapted from, or incorporating the Work, whether modified or unmodified.  
-   “Contribution” means any submission, modification, or enhancement intentionally provided by a third party for inclusion in this repository.  
-   “QuantInsti Marks” means the names, logos, and trademarks owned or licensed by QuantInsti.
+- “Work” means the collection of code, data, examples, documentation, scripts, workflows, AI/ML models, or other materials made available in this repository or accompanying files.
+- “Licensor” means QuantInsti Quantitative Learning Pvt. Ltd. (“QuantInsti”), including its affiliates and authorized contributors.
+- “User” or “You” means any individual, researcher, developer, or organization accessing or using the Work.
+- “Non-Commercial Use” means use of the Work solely for educational, research, or personal learning purposes, without direct or indirect monetary gain, commercial deployment, or inclusion in a paid product or service.
+- “Commercial Use” means any use intended for or resulting in commercial advantage, revenue generation, consulting, paid access, or resale, including but not limited to deployment in proprietary software, trading platforms, or paid data services.
+- “Derivative Work” means any work based upon, adapted from, or incorporating the Work, whether modified or unmodified.
+- “Contribution” means any submission, modification, or enhancement intentionally provided by a third party for inclusion in this repository.
+- “QuantInsti Marks” means the names, logos, and trademarks owned or licensed by QuantInsti.
 
 2. **License Grant**
 
