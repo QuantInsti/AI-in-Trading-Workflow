@@ -1,4 +1,4 @@
-                        QuantInsti Open License (QOL) – Version 1.1
+QuantInsti Open License (QOL) – Version 1.1
 
 October 2025
 
