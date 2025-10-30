@@ -7,7 +7,7 @@
 Our repository for demonstrating how to build and deploy sophisticated algorithmic trading solutions using modern AI, from multi-agent systems to production-ready execution frameworks.
 ---
 
-## 🎯 Objective
+## Objective
 
 The primary objective of this repository is to provide a concrete, end-to-end example of using modern AI agents for trading. It connects the theoretical application of LLMs to a practical, executable trading bot.
 
@@ -22,7 +22,7 @@ This project will be updated with new implementations and tutorials to reflect a
 
 ---
 
-## 📂 Repository Structure & Key Components
+## Repository Structure & Key Components
 
 This repository is organized into modules based on the AI tools and platforms they demonstrate. We will continue to expand this structure as we incorporate new technologies.
 
@@ -63,7 +63,7 @@ This demonstrates a complete workflow, from AI-driven analysis to automated trad
 
 ---
 
-## 🌱 Future Implementations
+## Future Implementations
 
 This repository is actively maintained and will be expanded with more implementations, including but not limited to:
 -   Advanced quantitative strategies using AI.
@@ -75,10 +75,10 @@ Stay tuned for updates!
 
 ---
 
-## 🤝 How to Contribute
+## How to Contribute
 
 Contributions are welcome! Whether it's reporting a bug, suggesting a new feature, improving documentation, or submitting a new implementation, your help is appreciated. Please refer to the `CONTRIBUTING.md` guide within this main directory for initial guidelines.
 
-## 📄 License
+## License
 
 This project is licensed under the Apache License 2.0. See the `LICENSE.txt` file in this directory for details.
