@@ -1,6 +1,6 @@
-                     QuantInsti Open License (QOL) – Version 1.1
+QuantInsti Open License (QOL) – Version 1.1
 
-                          October 2025
+October 2025
 
 © 2025 QuantInsti Quantitative Learning Pvt. Ltd.
 
