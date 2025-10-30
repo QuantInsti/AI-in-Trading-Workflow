@@ -6,6 +6,8 @@ October 2025
 © 2025 QuantInsti Quantitative Learning Pvt. Ltd.
 </div>
 
+Everyone is permitted to copy and distribute verbatim copies of this license document, but changing it is not allowed.
+
 Website: https://www.quantinsti.com
 
 Contact: collaborate@quantinsti.com
