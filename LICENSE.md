@@ -138,3 +138,9 @@ QuantInsti does not guarantee the profitability, reliability, or suitability of 
 All Rights Reserved.
 
 Website: https://www.quantinsti.com
+
+<div align="center">
+
+END OF TERMS AND CONDITIONS
+
+</div>
