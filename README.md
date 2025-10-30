@@ -50,7 +50,7 @@ This repository is organized into modules based on the AI tools and platforms th
 
 ---
 
-## 🚀 Featured Implementation: AI News-Sentiment Trader
+## Featured Implementation: AI News-Sentiment Trader
 
 The main example in this repository demonstrates the integration of the AI strategy with the trading framework. By combining the `ib_stock_setup` and the `AI_strategy.py`, you can deploy a bot that:
 1.  Connects to Interactive Brokers.
