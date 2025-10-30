@@ -2,7 +2,9 @@ QuantInsti Open License (QOL) – Version 1.1
 
 October 2025
 © 2025 QuantInsti Quantitative Learning Pvt. Ltd.
+
 Website: https://www.quantinsti.com
+
 Contact: collaborate@quantinsti.com
 
 1. Definitions
