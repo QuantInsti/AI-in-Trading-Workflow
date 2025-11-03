@@ -18,7 +18,7 @@ The system uses a team of specialized AI agents to analyze a stock by combining 
 
 *   **`ib_stock_setup/`**: A Python package that represents a trading setup framework. It is designed to handle the mechanics of trading, such as fetching data, managing positions, and executing orders with Interactive Brokers. The strategy logic is defined in `ib_stock_setup/user_config/AI_strategy.py`.
 
-*   **`client_example.py`**: A standalone Python script that showcases the core multi-agent logic. It demonstrates how the agents collaborate to produce a trading signal. This script serves as the blueprint for the logic that is integrated into the `ib_stock_setup` framework.
+*   **`client_example.py`**: A standalone Python script that showcases the core multi-agent logic. It demonstrates how the agents collaborate to produce a trading signal. This script serves as the blueprint for the logic that is integrated into the `ib_stock_setup` framework. This Python file comes from our another example on [example_01_create_multi_agent_system](https://github.com/QuantInsti/AI-in-Trading-Workflow/tree/main/gemini_fullstack_langchain/example_01_create_multi_agent_system)
 
 *   **`how_to.md`**: A guide that explains how to use a tool like the Gemini CLI to integrate the logic from `client_example.py` into the `AI_strategy.py` file within the trading framework.
 
