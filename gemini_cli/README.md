@@ -30,9 +30,9 @@ This guide assumes you have the Google Gemini CLI installed and authenticated. F
 
 The following examples are available in this directory:
 
-* [**Example 01: Create Backtesting Code for BTC-USD**](http://./example_01_create_backtesting_code/README.md): This example demonstrates using Gemini CLI to generate a Python script for backtesting a trading strategy using the BTC-USD, including parameter optimization and a PDF to report the strategy performance metrics and plots.
+* [**Example 01: Create Backtesting Code for BTC-USD**](https://github.com/QuantInsti/AI-in-Trading-Workflow/tree/main/gemini_cli/example_01_create_backtesting_code/README.md): This example demonstrates using Gemini CLI to generate a Python script for backtesting a trading strategy using the BTC-USD, including parameter optimization and a PDF to report the strategy performance metrics and plots.
 
-* [**Example 02: Run a Multi-Agent System on an IB Stock Setup**](http://./example_02_run_multi_agent_system_on_IB_stock_setup/README.md): This example demonstrates how to integrate a multi-agent system for news analysis into our existing IB-based stock trading setup.
+* [**Example 02: Run a Multi-Agent System on an IB Stock Setup**](https://github.com/QuantInsti/AI-in-Trading-Workflow/tree/main/gemini_cli/example_02_run_multi_agent_system_on_IB_stock_setup/README.md): This example demonstrates how to integrate a multi-agent system for news analysis into our existing IB-based stock trading setup.
 
 ## Usage Examples
 
