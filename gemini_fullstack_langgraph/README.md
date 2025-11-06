@@ -68,12 +68,12 @@ Instead of the same repository instructions, you can follow the below steps:
 1. Install Node.js:
 	1.1. Go to https://nodejs.org/en/blog/release/v12.22.3
 	1.2. Download node.js based on your specific Operating System.
-	1.3. Open the downloaded excutable file and install the program.
+   	1.3. Open the downloaded excutable file and install the program.
 	1.4. Install Node.js:
 		4.1 For Windows, in the same previous terminal, type mkdir "%AppData%\npm"
 		4.2 For Linux OS, go to https://nodejs.org/en/download/current and follow the instructions
 	1.5. Type: npx https://github.com/google-gemini/gemini-cli
-2. Install gemini fullstack langgraph
+3. Install gemini fullstack langgraph
 	2.1. Clone the repository of the library
 	```bash
 	git clone https://github.com/google-gemini/gemini-fullstack-langgraph-quickstart.git
