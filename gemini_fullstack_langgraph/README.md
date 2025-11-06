@@ -75,23 +75,23 @@ Instead of the same repository instructions, you can follow the below steps:
 	1.5. Type: npx https://github.com/google-gemini/gemini-cli
 2. Install gemini fullstack langgraph
 	2.1. Clone the repository of the library
-```bash
-git clone https://github.com/google-gemini/gemini-fullstack-langgraph-quickstart.git
-```
-	2.2. In the same above terminal, go the repository save in your PC (Where "path_to" is the address that corresponds to the PC location of your downloaded cloned repository):
-```bash
-cd /path_to/gemini-fullstack-langgraph-quickstart-main
-```
+	```bash
+	git clone https://github.com/google-gemini/gemini-fullstack-langgraph-quickstart.git
+	```
+ 	2.2. In the same above terminal, go the repository save in your PC (Where "path_to" is the address that corresponds to the PC location of your downloaded cloned repository):
+	```bash
+	cd /path_to/gemini-fullstack-langgraph-quickstart-main
+	```
 	
 	2.3. Type:
-```bash
-cd backend
-```
+	```bash
+	cd backend
+	```
 
-	2.2. Then, type:
-```bash
-pip install .
-```
+	2.4. Then, type:
+	```bash
+	pip install .
+	```
 
 ### Step 5: Set up Your Gemini API Key
 
