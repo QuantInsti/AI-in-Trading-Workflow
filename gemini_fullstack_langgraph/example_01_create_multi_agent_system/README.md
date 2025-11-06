@@ -71,6 +71,11 @@ Once the environment is fully configured, you can use the Gemini CLI with the li
 
 You have a complete guide on how to set gemini in the main folder of the [gemini-fullstack-langgraph](https://github.com/QuantInsti/AI-in-Trading-Workflow/tree/main/gemini_fullstack_langgraph)
 
+We recommend using our Conda environment for this example. From your terminal (or Anaconda Prompt on Windows), run:
+```bash
+conda activate gemini_fl
+```
+
 ### 4. Navigate to the Directory
 
 Change to the example's directory in your Anaconda Prompt or terminal.
@@ -89,14 +94,7 @@ Where "path_to" is the address that corresponds to the PC location of your downl
 
 Let's have in mind the example address as "B"
 
-### 5. Set up the Environment
-
-We recommend using our Conda environment for this example. From your terminal (or Anaconda Prompt on Windows), run:
-```bash
-conda activate gemini_fl
-```
-
-### Step 6: Copy the repository example in gemini-fullstack-langgraph's backend folder
+### Step 5: Copy the repository example in gemini-fullstack-langgraph's backend folder
 
 Change to the example's directory in your Anaconda Prompt or terminal (Where "path_to" is the address that corresponds to the PC location of your downloaded cloned repository
 ).
@@ -133,7 +131,7 @@ For Mac/Linux users:
 cd /B/backend/example_01_create_multi_agent_system
 ```
 
-### 7. Set up Your Gemini API Key
+### 6. Set up Your Gemini API Key
 
 Set your Gemini API Key as an environment variable.
 
@@ -149,7 +147,7 @@ set GEMINI_API_KEY="YOUR_ACTUAL_GEMINI_API_KEY"
 export GEMINI_API_KEY="YOUR_ACTUAL_GEMINI_API_KEY"
 ```
 
-### 8. Run the Example
+### 7. Run the Example
 
 Once the prerequisites are met and your API key is set, run the example from your terminal:
 
@@ -159,7 +157,7 @@ python client_example.py
 
 The script will execute the agent workflow, print the final trading recommendation to the console, and save a detailed PDF report in the same directory.
 
-### 9. Building Your Own
+### 8. Building Your Own
 
 The `how_to.md` file contains a tutorial on how to use conversational AI to build a similar system. It provides example prompts and instructions for guiding an AI assistant to write the agent code.
 
