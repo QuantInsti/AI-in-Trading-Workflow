@@ -47,8 +47,14 @@ git clone https://github.com/QuantInsti/AI-in-Trading-Workflow.git
 
 Change to the example's directory in your Anaconda Prompt or terminal.
 
+For Windows users:
 ```bash
-cd /path_to/AI-in-Trading-Workflow-main/AI-in-Trading-Workflow-main/gemini_cli/example_01_create_backtesting_code
+cd \path_to\AI-in-Trading-Workflow\gemini_cli\example_01_create_backtesting_code
+
+```
+For Mac/Linux users:
+```bash
+cd /path_to/AI-in-Trading-Workflow/gemini_cli/example_01_create_backtesting_code
 ```
 
 Where "path_to" is the address that corresponds to the PC location of your downloaded cloned repository
