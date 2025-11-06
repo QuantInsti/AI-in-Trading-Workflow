@@ -32,8 +32,8 @@ the required structure for the trading application).
 Example prompt:
 
 > I want to use my client_example.py file for my trading application named ib_stock_setup. Please read the following two files: 
-> 1. `/path/to/AI-in-Trading-Workflow-final/gemini_cli/example_02_run_multi_agent_system_on_IB_stock_setup/client_example.py`
-> 2. `/path/to/AI-in-Trading-Workflow-final/gemini_cli/example_02_run_multi_agent_system_on_IB_stock_setup/ib_stock_setup/user_config/strategy.py`
+> 1. `/path/to/AI-in-Trading-Workflow/gemini_cli/example_02_run_multi_agent_system_on_IB_stock_setup/client_example.py`
+> 2. `/path/to/AI-in-Trading-Workflow/gemini_cli/example_02_run_multi_agent_system_on_IB_stock_setup/ib_stock_setup/user_config/strategy.py`
 
 ------------------------------------------------------------------------
 
