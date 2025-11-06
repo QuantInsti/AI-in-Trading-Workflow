@@ -118,7 +118,7 @@ export GEMINI_API_KEY="YOUR_ACTUAL_GEMINI_API_KEY"
 
 ### Step 6: Run the Examples
 
-Once the environment is fully configured and your API key is set, navigate to the specific example directory you wish to run and follow its `README.md` for detailed execution instructions.
+Once the environment is fully configured and your API key is set, you can copy the repository example into this backend folder such that you can the Python script.
 
 ## Available Use Cases
 
