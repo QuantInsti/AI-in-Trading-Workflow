@@ -16,9 +16,9 @@ The system uses a team of specialized AI agents to analyze a stock by combining 
 
 ## Core Components
 
-*   **`ib_stock_setup/`**: A Python package that represents a trading setup framework. It is designed to handle the mechanics of trading, such as fetching data, managing positions, and executing orders with Interactive Brokers. The strategy logic is defined in `ib_stock_setup/user_config/AI_strategy.py`. This trading setup can be found in our repository called [QuantInsti-Live-Algo-Trading-Setups](https://github.com/QuantInsti/QuantInsti-Live-Algo-Trading-Setups/tree/master/ibkr-stock)
+*   **`ibkr-stock/`**: A Python package that represents a trading setup framework. It is designed to handle the mechanics of trading, such as fetching data, managing positions, and executing orders with Interactive Brokers. The strategy logic is defined in `ibkr-stock/user_config/AI_strategy.py`. This trading setup can be found in our repository called [QuantInsti-Live-Algo-Trading-Setups](https://github.com/QuantInsti/QuantInsti-Live-Algo-Trading-Setups/tree/master/ibkr-stock)
 
-*   **`client_example.py`**: A standalone Python script that showcases the core multi-agent logic. It demonstrates how the agents collaborate to produce a trading signal. This script serves as the blueprint for the logic that is integrated into the `ib_stock_setup` framework. This Python file comes from our another example on [gemini_fullstack_langchain/example_01_create_multi_agent_system](https://github.com/QuantInsti/AI-in-Trading-Workflow/tree/main/gemini_fullstack_langgraph/example_01_create_multi_agent_system)
+*   **`client_example.py`**: A standalone Python script that showcases the core multi-agent logic. It demonstrates how the agents collaborate to produce a trading signal. This script serves as the blueprint for the logic that is integrated into the `ibkr-stock` framework. This Python file comes from our another example on [gemini_fullstack_langchain/example_01_create_multi_agent_system](https://github.com/QuantInsti/AI-in-Trading-Workflow/tree/main/gemini_fullstack_langgraph/example_01_create_multi_agent_system)
 
 *   **`how_to.md`**: A guide that explains how to use a tool like the Gemini CLI to integrate the logic from `client_example.py` into the `AI_strategy.py` file within the trading framework.
 
@@ -35,7 +35,7 @@ The system follows a three-step process to generate a trading signal:
     *   `confidence`: A score from 0.0 to 1.0
     *   `reasoning`: An explanation for the decision.
 
-This workflow is orchestrated within the `get_signal` function in `ib_stock_setup/user_config/AI_strategy.py`.
+This workflow is orchestrated within the `get_signal` function in `ibkr-stock/user_config/AI_strategy.py`.
 
 ## Getting Started
 
@@ -105,11 +105,11 @@ export GEMINI_API_KEY="YOUR_ACTUAL_GEMINI_API_KEY"
 
 ### Step 5: Create the AI Strategy File
 
-The trading logic is defined in `ib_stock_setup/user_config/AI_strategy.py`. To create this file, follow the instructions in `how_to.md`, which explains how to adapt the logic from `client_example.py` into the required format for the trading framework.
+The trading logic is defined in `ibkr-stock/user_config/AI_strategy.py`. To create this file, follow the instructions in `how_to.md`, which explains how to adapt the logic from `client_example.py` into the required format for the trading framework.
 
 ### Step 6: Run the Trading System
 
-Once `AI_strategy.py` has been created and is in the `user_config` directory, you will need to run the main application within the `ib_stock_setup` package. This typically involves navigating to the `ib_stock_setup` directory and executing its main script (e.g., `python main.py` or similar, depending on the framework's entry point). The framework will then call the `get_signal` function to get trading signals from the multi-agent system and execute trades.
+Once `AI_strategy.py` has been created and is in the `user_config` directory, you will need to run the main application within the `ibkr-stock` package. This typically involves navigating to the `ibkr-stock` directory and executing its main script (e.g., `python main.py` or similar, depending on the framework's entry point). The framework will then call the `get_signal` function to get trading signals from the multi-agent system and execute trades.
 
 This modular design separates the AI-driven analysis from the trading mechanics.
 
