@@ -82,14 +82,11 @@ From your terminal (or Anaconda Prompt on Windows), run:
 conda activate gemini_cli_env
 ```
 
-**2. Install Dependencies:**
-Install the required Python libraries using the `requirements.txt` file:
+### Step 4: Set up the Environment as per the stock setup
 
-```bash
-pip install -r requirements.txt
-```
+You should follow the instructions of the stock setup located in the [README]() file of the setup repository.
 
-### Step 4: Set up Your Gemini API Key
+### Step 5: Set up Your Gemini API Key
 
 Set your Gemini API Key as an environment variable.
 
@@ -105,11 +102,11 @@ set GEMINI_API_KEY="YOUR_ACTUAL_GEMINI_API_KEY"
 export GEMINI_API_KEY="YOUR_ACTUAL_GEMINI_API_KEY"
 ```
 
-### Step 5: Create the AI Strategy File
+### Step 6: Create the AI Strategy File
 
 The trading logic is defined in `ibkr-stock/user_config/AI_strategy.py`. To create this file, follow the instructions in `how_to.md`, which explains how to adapt the logic from `client_example.py` into the required format for the trading framework.
 
-### Step 6: Run the Trading System
+### Step 7: Run the Trading System
 
 Once `AI_strategy.py` has been created and is in the `user_config` directory, you will need to run the main application within the `ibkr-stock` package. This typically involves navigating to the `ibkr-stock` directory and executing its main script (e.g., `python main.py` or similar, depending on the framework's entry point). The framework will then call the `get_signal` function to get trading signals from the multi-agent system and execute trades.
 
