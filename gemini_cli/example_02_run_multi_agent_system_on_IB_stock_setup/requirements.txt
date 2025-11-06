@@ -1,6 +1,0 @@
-# Dependencies for the AI Strategy
-yfinance
-langchain-core
-langgraph
-google-generativeai
-langchain-google-genai

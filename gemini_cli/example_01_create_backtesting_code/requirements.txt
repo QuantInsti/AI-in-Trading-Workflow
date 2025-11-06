@@ -1,7 +1,0 @@
-yfinance
-pandas
-numpy
-matplotlib
-fpdf
-tqdm
-seaborn
