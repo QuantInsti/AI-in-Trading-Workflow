@@ -101,7 +101,7 @@ conda activate gemini_fl
 Change to the example's directory in your Anaconda Prompt or terminal (Where "path_to" is the address that corresponds to the PC location of your downloaded cloned repository
 ).
 
-A and B are the folders' addresses we used previously in step 2 and 4, respectively.
+A and B are the folders' addresses we previously used in step 2 and 4, respectively.
 
 ```bash
 cd /path_to/gemini-fullstack-langgraph-quickstart/backend
