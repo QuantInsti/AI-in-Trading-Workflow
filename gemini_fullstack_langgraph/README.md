@@ -70,7 +70,7 @@ Instead of the same repository instructions, you can follow the below steps:
 	pip install .
 	```
 
-### Step 2: Navigate to the Directory
+### Step 3: Navigate to the Directory
 
 Navigate to the `gemini_fullstack_langgraph` directory in your terminal or Anaconda Prompt.
 
@@ -82,7 +82,7 @@ cd /path_to/AI-in-Trading-Workflow-main/AI-in-Trading-Workflow-main/gemini_fulls
 
 Where "path_to" is the address that corresponds to the PC location of your downloaded cloned repository
 
-### Step 3: Set up the Environment
+### Step 4: Set up the Environment
 
 We recommend using a Conda environment for these examples.
 
@@ -93,7 +93,7 @@ conda create --name gemini_fl python=3.12
 conda activate gemini_fl
 ```
 
-### Step 4: Set up Your Gemini API Key
+### Step 5: Set up Your Gemini API Key
 
 Set your Gemini API Key as an environment variable.
 
@@ -109,7 +109,7 @@ set GEMINI_API_KEY="YOUR_ACTUAL_GEMINI_API_KEY"
 export GEMINI_API_KEY="YOUR_ACTUAL_GEMINI_API_KEY"
 ```
 
-### Step 5: Run the Examples
+### Step 6: Run the Examples
 
 Once the environment is fully configured and your API key is set, navigate to the specific example directory you wish to run and follow its `README.md` for detailed execution instructions.
 
