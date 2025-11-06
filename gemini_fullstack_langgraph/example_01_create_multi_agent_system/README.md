@@ -32,6 +32,8 @@ The system operates as a pipeline, where each agent completes a specific task be
 
 ## Getting Started
 
+Before you proceed, don't forget to check the gemini-fullstack-langgraph folder's [README](https://github.com/QuantInsti/AI-in-Trading-Workflow/blob/main/gemini_fullstack_langgraph/README.md) file.
+
 ### Prerequisites
 
 *   Python 3.12
