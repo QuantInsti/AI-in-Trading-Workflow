@@ -73,9 +73,17 @@ Once the environment is fully configured, you can use the Gemini CLI with the li
 
 You have a complete guide on how to set gemini in the main folder of the [gemini-fullstack-langgraph](https://github.com/QuantInsti/AI-in-Trading-Workflow/tree/main/gemini_fullstack_langgraph)
 
+**1. Activate our Conda environment:**
 We recommend using our Conda environment for this example. From your terminal (or Anaconda Prompt on Windows), run:
 ```bash
 conda activate gemini_fl
+```
+
+**2. Install Dependencies:**
+Install the required Python libraries using the `requirements.txt` file:
+
+```bash
+pip install -r requirements.txt
 ```
 
 ### 4. Navigate to the Directory
