@@ -10,7 +10,7 @@ Always conduct your own thorough research and risk assessment before deploying a
 
 ---
 
-This project demonstrates a multi-agent system built with LangChain and powered by Gemini. It uses a group of AI agents that work together to gather news, analyze market sentiment, and produce a final trading recommendation.
+This project demonstrates a multi-agent system built with LangGraph and powered by Gemini. It uses a group of AI agents that work together to gather news, analyze market sentiment, and produce a final trading recommendation.
 
 A key feature of this example is its ability to generate a detailed **PDF report** after each analysis. This report provides a complete audit trail of the agent's decision-making process, summarizing the inputs, agent contributions, and the final output.
 
@@ -52,7 +52,7 @@ Before running this example, you must set up the `gemini-fullstack-langgraph-qui
 
 Once the environment is fully configured, you can use the Gemini CLI with the library to generate the `client_example.py` file, as described in the `how_to.md` guide.
 
-You have a complete guide on how to set gemini in the main folder of the [gemini-fullstack-langchan](https://github.com/QuantInsti/AI-in-Trading-Workflow/tree/main/gemini_fullstack_langchain)
+You have a complete guide on how to set gemini in the main folder of the [gemini-fullstack-langgraph](https://github.com/QuantInsti/AI-in-Trading-Workflow/tree/main/gemini_fullstack_langgraph)
 
 ### 2. Navigate to the Directory
 
@@ -79,13 +79,13 @@ cd /path_to/gemini-fullstack-langgraph-quickstart-main/backend
    1.1. For Windows:
    
    ```bash
-   xcopy /E /I /H "\path_to\AI-in-Trading-Workflow\gemini_fullstack_langchain\example_01_create_multi_agent_system" "\path2_to\gemini-fullstack-langgraph-quickstart\backend\example_01_create_multi_agent_system"
+   xcopy /E /I /H "\path_to\AI-in-Trading-Workflow\gemini_fullstack_langgraph\example_01_create_multi_agent_system" "\path2_to\gemini-fullstack-langgraph-quickstart\backend\example_01_create_multi_agent_system"
    ```
    
    1.2. For Mac/Linux
    
    ```bash
-   cp -r "\path_to\AI-in-Trading-Workflow\gemini_fullstack_langchain\example_01_create_multi_agent_system" "\path2_to\gemini-fullstack-langgraph-quickstart\backend\example_01_create_multi_agent_system"
+   cp -r "\path_to\AI-in-Trading-Workflow\gemini_fullstack_langgraph\example_01_create_multi_agent_system" "\path2_to\gemini-fullstack-langgraph-quickstart\backend\example_01_create_multi_agent_system"
    ```
    
 2. Set the example folder as the current directory
