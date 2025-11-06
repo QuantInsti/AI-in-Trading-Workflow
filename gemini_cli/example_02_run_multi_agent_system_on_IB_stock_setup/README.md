@@ -39,6 +39,8 @@ This workflow is orchestrated within the `get_signal` function in `ibkr-stock/us
 
 ## Getting Started
 
+Before you proceed, don't forget to check the gemini folder's [README](https://github.com/QuantInsti/AI-in-Trading-Workflow/blob/main/gemini_cli/README.md) file.
+
 ### Prerequisites
 
 *   Python 3.12
