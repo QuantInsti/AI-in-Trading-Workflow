@@ -40,7 +40,12 @@ git clone https://github.com/QuantInsti/AI-in-Trading-Workflow.git
 
 Navigate to the `gemini_cli` directory in your terminal or Anaconda Prompt.
 
-**For Windows, macOS, and Linux (in Anaconda Prompt or Terminal):**
+**For Windows users:**
+```bash
+cd AI-in-Trading-Workflow\gemini_cli
+```
+
+**For Mac/Linux users:**
 ```bash
 cd AI-in-Trading-Workflow/gemini_cli
 ```
