@@ -75,15 +75,20 @@ cd /path_to/gemini-fullstack-langgraph-quickstart-main/backend
 ```
 
 1. Type the following:
+
 1.1. For Windows:
+
 ```bash
 xcopy /E /I /H "\path_to\AI-in-Trading-Workflow-main\AI-in-Trading-Workflow-main\gemini_fullstack_langchain\example_01_create_multi_agent_system" "\path_to\gemini-fullstack-langgraph-quickstart-main\backend\example_01_create_multi_agent_system"
 ```
+
 1.2. For Mac/Linux
+
 ```bash
 xcopy /E /I /H "\path_to\AI-in-Trading-Workflow-main\AI-in-Trading-Workflow-main\gemini_fullstack_langchain\example_01_create_multi_agent_system" "\path_to\gemini-fullstack-langgraph-quickstart-main\backend\example_01_create_multi_agent_system"
 ```
-3. Set the example folder as the current directory
+2. Set the example folder as the current directory
+
 ```bash
 cd example_01_create_multi_agent_system
 ```
