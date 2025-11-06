@@ -84,7 +84,7 @@ conda activate gemini_cli_env
 
 ### Step 4: Set up the Environment as per the stock setup
 
-You should follow the instructions of the stock setup located in the [README]() file of the setup repository.
+You should follow the instructions of the stock setup located in the [README](https://github.com/QuantInsti/AI-in-Trading-Workflow/blob/main/gemini_cli/example_02_run_multi_agent_system_on_IB_stock_setup/ibkr-stock/README.md) file of the setup repository.
 
 ### Step 5: Set up Your Gemini API Key
 
