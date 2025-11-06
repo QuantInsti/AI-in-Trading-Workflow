@@ -64,7 +64,7 @@ Instead of the same repository instructions, you can follow the below steps:
 	```
  	2.2. In the same above terminal, go the repository save in your PC (Where "path_to" is the address that corresponds to the PC location of your downloaded cloned repository):
 	```bash
-	cd /path_to/gemini-fullstack-langgraph-quickstart-main
+	cd /path_to/gemini-fullstack-langgraph-quickstart
 	```
 	
 	2.3. Type:
@@ -83,8 +83,14 @@ Navigate to the `gemini_fullstack_langgraph` directory in your terminal or Anaco
 
 **For Windows, macOS, and Linux (in Anaconda Prompt or Terminal):**
 
+For Windows users:
 ```bash
-cd /path_to/AI-in-Trading-Workflow-main/AI-in-Trading-Workflow-main/gemini_fullstack_langgraph
+cd \path_to\AI-in-Trading-Workflow\gemini_fullstack_langgraph
+```
+
+For Mac/Linux users:
+```bash
+cd /path_to/AI-in-Trading-Workflow/gemini_fullstack_langgraph
 ```
 
 Where "path_to" is the address that corresponds to the PC location of your downloaded cloned repository
