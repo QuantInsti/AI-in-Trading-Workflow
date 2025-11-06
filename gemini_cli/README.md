@@ -88,7 +88,7 @@ export GEMINI_API_KEY="YOUR_ACTUAL_GEMINI_API_KEY"
 In your same terminal, type:
 ```bash
 gemini
-``
+```
 
 ### Step 6: Run the Examples
 
