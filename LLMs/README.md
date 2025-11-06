@@ -33,32 +33,7 @@ First, clone this repository to your local machine:
 git clone https://github.com/QuantInsti/AI-in-Trading-Workflow.git
 ```
 
-### Step 2: Navigate to the Directory
-
-Navigate to the `LLMs` directory in your terminal or Anaconda Prompt.
-
-**For Windows, macOS, and Linux (in Anaconda Prompt or Terminal):**
-```bash
-cd AI-in-Trading-Workflow/LLMs
-```
-
-### Step 3: Set up Your Gemini API Key
-
-Set your Gemini API Key as an environment variable.
-
-**For Windows (in Anaconda Prompt):**
-
-```bash
-set GEMINI_API_KEY="YOUR_ACTUAL_GEMINI_API_KEY"
-```
-
-**For macOS and Linux (in a terminal with an activated Anaconda environment):**
-
-```bash
-export GEMINI_API_KEY="YOUR_ACTUAL_GEMINI_API_KEY"
-```
-
-### Step 4: Run the Examples
+### 2: Run the Examples
 
 Once your API key is set, navigate to the specific example directory you wish to run and follow its `README.md` for detailed execution instructions.
 
