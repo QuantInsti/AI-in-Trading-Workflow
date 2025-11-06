@@ -71,7 +71,7 @@ Change to the example's directory in your Anaconda Prompt or terminal (Where "pa
 ).
 
 ```bash
-cd /path_to/gemini-fullstack-langgraph-quickstart-main/backend
+cd /path_to/gemini-fullstack-langgraph-quickstart/backend
 ```
 
 1. Type the following:
