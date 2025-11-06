@@ -79,7 +79,7 @@ pip install -r requirements.txt
 
 ### Step 4: Configure API Keys and Environment Variables
 
-Create a file named `.env` in the project directory (the same directory as `main.py`) and add your API keys and other credentials.
+Create a file named `.env` in the project directory (the same directory as `agentic_AI_portfolio_manager.py`) and add your API keys and other credentials.
 
 ```env
 # .env file
