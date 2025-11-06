@@ -62,6 +62,15 @@ git clone https://github.com/QuantInsti/AI-in-Trading-Workflow.git
 
 Change to the example's directory in your Anaconda Prompt or terminal.
 
+For Windows Users:
+```bash
+cd \path_to\AI-in-Trading-Workflow-main\AI-in-Trading-Workflow-main\AI-in-Trading-Workflow-main\LLMs\example_02_Agentic_AI_based_Portfolio_manager_using_Alpaca_API
+```
+For Mac/Linux Users:
+```bash
+cd /path_to/AI-in-Trading-Workflow-main/AI-in-Trading-Workflow-main/LLMs/example_02_Agentic_AI_based_Portfolio_manager_using_Alpaca_API
+```
+
 ### Step 3: Install Dependencies
 
 We recommend using a Conda environment for this project:
@@ -96,7 +105,7 @@ You need to create a file named **`.env`** in your project directory (the same l
 
 #### ** For Windows Users**
 
-1.  **Open your File Explorer** and navigate to the project directory.
+1.  **Open your File Explorer** and navigate to the example directory.
 2.  **Right-click** in the folder and select **New \> Text Document**.
 3.  Name the new file **`.env`** (make sure to include the preceding dot and remove the `.txt` extension). You may need to enable **"File name extensions"** in the **View** tab of File Explorer to rename it correctly.
 4.  **Open the `.env` file** with a text editor (like Notepad, VS Code, or Notepad++).
