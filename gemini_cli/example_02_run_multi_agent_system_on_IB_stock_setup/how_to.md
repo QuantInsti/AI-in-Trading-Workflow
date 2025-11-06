@@ -1,7 +1,7 @@
 # Guide to Creating `AI_strategy.py` from `client_example.py`
 
 This guide outlines the process of using the Gemini CLI to create the
-`AI_strategy.py` file for the `ib_stock_setup` framework, using the
+`AI_strategy.py` file for the `ibkr-stock` framework, using the
 logic from `client_example.py` as a starting point.
 
 To get started, first clone the repository:
@@ -31,7 +31,7 @@ the required structure for the trading application).
 
 Example prompt:
 
-> I want to use my client_example.py file for my trading application named ib_stock_setup. Please read the following two files: 
+> I want to use my client_example.py file for my trading application named ibkr-stock. Please read the following two files: 
 > 1. `/path/to/AI-in-Trading-Workflow/gemini_cli/example_02_run_multi_agent_system_on_IB_stock_setup/client_example.py`
 > 2. `/path/to/AI-in-Trading-Workflow/gemini_cli/example_02_run_multi_agent_system_on_IB_stock_setup/ib_stock_setup/user_config/strategy.py`
 
@@ -83,4 +83,4 @@ is correct, instruct the CLI to save the file.
 Example prompt:
 
 > The code is correct. Please save this new version to
-> `path/to/ib_stock_setup/user_config/AI_strategy.py`.
+> `path/to/ibkr-stock/user_config/AI_strategy.py`.
