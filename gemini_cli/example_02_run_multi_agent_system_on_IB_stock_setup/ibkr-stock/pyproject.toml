@@ -1,0 +1,67 @@
+# Toml config file for the EPAT stock trading setup
+# Author: Jose Carlos Gonzales Tanaka
+
+## Licensed under the QuantInsti Open License (QOL) v1.1 (the "License").
+# - Copyright 2025 QuantInsti Quantitative Learning Pvt. Ltd.
+# - You may not use this file except in compliance with the License.
+# - You may obtain a copy of the License in LICENSE.md at the repository root or at https://www.quantinsti.com.
+# - Non-Commercial use only; see the License for permitted use, attribution, and restrictions.
+
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ibkr-stock"
+version = "1.0.0"
+authors = [{name = "Jose Carlos Gonzales Tanaka"}]
+
+dependencies = [
+    'featuretools~=1.31.0',
+    'numpy~=2.0.2',
+    'pandas~=2.2.3',
+    'hmmlearn~=0.3.3',
+    'lightgbm~=4.6.0',
+    'matplotlib-inline~=0.1.6',
+    'openpyxl~=3.1.5',
+    'scikit-learn~=1.6.1',
+    'scipy~=1.15.0',
+    'statsmodels~=0.14.4',
+    'ta~=0.11.0',
+    'yfinance~=0.2.61',
+    'shap-hypetune~=0.2.7',
+]
+
+description = "A trading setup to trade stock assets algorithmically using the Interactive Brokers' API"
+readme = {file = "README.md", content-type = "text/markdown"}
+requires-python = ">=3.12"
+keywords = ["trading", "trading-setup", "trading-app", "stock-assets", "Interactive-Brokers", "algorithmic-trading", "EPAT-content-team", "QuantInsti", "IB API"]
+license = {text = "QuantInsti Open License (QOL) v1.1"}
+classifiers = [
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14"]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+exclude = [
+    "dist*",
+    "doc*",
+    "res*",
+    "samples*",
+    "previous_versions*",
+    "changelog*"
+]
+
+
+[project.urls]
+"QuantInsti Homepage" = "https://www.quantinsti.com/"
+"Author's LinkedIn profile" = "https://www.linkedin.com/in/jose-carlos-gonzales-tanaka/"
+Repository = "https://github.com/QuantInsti/QuantInsti-Live-Algo-Trading-Setups/tree/main/ibkr-stock"
+"Start-here documentation" = "https://github.com/QuantInsti/QuantInsti-Live-Algo-Trading-Setups/blob/main/ibkr-stock/doc/Start_here_documentation.md"
+"Strategy documentation" = "https://github.com/QuantInsti/QuantInsti-Live-Algo-Trading-Setups/blob/main/ibkr-stock/doc/Strategy_documentation.md"
+"Trading setup references" = "https://github.com/QuantInsti/QuantInsti-Live-Algo-Trading-Setups/blob/main/ibkr-stock/doc/The_trading_setup_references.md"
+"Developer's documentation" = "https://github.com/QuantInsti/QuantInsti-Live-Algo-Trading-Setups/blob/main/ibkr-stock/doc/Developer_documentation.md"
