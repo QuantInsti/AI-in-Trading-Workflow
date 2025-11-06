@@ -79,11 +79,32 @@ pip install -r requirements.txt
 
 ### Step 4: Configure API Keys and Environment Variables
 
-Create a file named `.env` in the project directory (the same directory as `agentic_AI_portfolio_manager.py`) and add your API keys and other credentials (The file explaining how to set each key can be found in the same directory as "keys_setting.md"). 
+You need to create a file named **`.env`** in your project directory (the same location as `agentic_AI_portfolio_manager.py`) and add all required API keys and credentials listed below.
 
-```env
-# .env file
+#### ** For Mac/Linux Users**
 
+1.  **Open your terminal** and navigate to the project directory.
+2.  Use the `touch` command to create the file:
+    ```bash
+    touch .env
+    ```
+3.  Use a text editor like `nano` or `vi` (or your preferred editor) to open and edit the file:
+    ```bash
+    nano .env
+    ```
+4.  **Copy and paste** the contents below into the `.env` file, replacing the placeholder values with your actual keys and credentials:
+
+#### ** For Windows Users**
+
+1.  **Open your File Explorer** and navigate to the project directory.
+2.  **Right-click** in the folder and select **New \> Text Document**.
+3.  Name the new file **`.env`** (make sure to include the preceding dot and remove the `.txt` extension). You may need to enable **"File name extensions"** in the **View** tab of File Explorer to rename it correctly.
+4.  **Open the `.env` file** with a text editor (like Notepad, VS Code, or Notepad++).
+5.  **Copy and paste** the contents below into the `.env` file, replacing the placeholder values with your actual keys and credentials:
+
+#### ** `.env` File Content (Required for both)**
+
+```ini
 # Google Gemini API Key (REQUIRED)
 GOOGLE_API_KEY="your-google-ai-api-key"
 
@@ -100,7 +121,11 @@ GMAIL_APP_PASSWORD="your-16-digit-app-password"
 RECIPIENT_EMAIL="email-to-receive-alerts@example.com"
 ```
 
-**Note on Gmail App Password:** For Gmail, you will need to enable 2-Step Verification in your Google Account settings and then generate a 16-digit **App Password** to use instead of your regular Gmail password. This is a security measure by Google.
+** Important Notes:**
+
+  * **Do not use quotes** around the key values if the key itself does not contain spaces or special characters, but the provided format uses them for consistency, which is generally safe.
+  * The **`.env`** file starts with a dot, making it a **hidden file** on Mac/Linux.
+  * Refer to the **`keys_setting.md`** file in the same directory for detailed instructions on how to obtain each of these keys.
 
 ### Step 5: Configure the Trading Parameters
 
