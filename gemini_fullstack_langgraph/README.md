@@ -37,37 +37,14 @@ First, clone this repository to your local machine:
 git clone https://github.com/QuantInsti/AI-in-Trading-Workflow.git
 ```
 
-### Step 2: Navigate to the Directory
-
-Navigate to the `gemini_fullstack_langgraph` directory in your terminal or Anaconda Prompt.
-
-**For Windows, macOS, and Linux (in Anaconda Prompt or Terminal):**
-
-```bash
-cd /path_to/AI-in-Trading-Workflow-main/AI-in-Trading-Workflow-main/gemini_fullstack_langgraph
-```
-
-Where "path_to" is the address that corresponds to the PC location of your downloaded cloned repository
-
-### Step 3: Set up the Environment
-
-We recommend using a Conda environment for these examples.
-
-**1. Create and activate the environment:**
-From your terminal (or Anaconda Prompt on Windows), run:
-```bash
-conda create --name gemini_fl python=3.12
-conda activate gemini_fl
-```
-
-### Step 4: Set up the `gemini-fullstack-langgraph-quickstart` Environment
+### Step 2: Set up the `gemini-fullstack-langgraph-quickstart` Environment
 
 This example depends on the `gemini-fullstack-langgraph-quickstart` environment. Please follow all the installation and setup instructions provided at the official repository: [https://github.com/google-gemini/gemini-fullstack-langgraph-quickstart](https://github.com/google-gemini/gemini-fullstack-langgraph-quickstart).
 
 Instead of the same repository instructions, you can follow the below steps:
 1. Install Node.js:
 	1.1. Go to https://nodejs.org/en/blog/release/v12.22.3
-	1.2. Download node.js based on your specific Operating System.
+   	1.2. Download node.js based on your specific Operating System.
    	1.3. Open the downloaded excutable file and install the program.
 	1.4. Install Node.js:
 		4.1 For Windows, in the same previous terminal, type mkdir "%AppData%\npm"
@@ -93,7 +70,30 @@ Instead of the same repository instructions, you can follow the below steps:
 	pip install .
 	```
 
-### Step 5: Set up Your Gemini API Key
+### Step 2: Navigate to the Directory
+
+Navigate to the `gemini_fullstack_langgraph` directory in your terminal or Anaconda Prompt.
+
+**For Windows, macOS, and Linux (in Anaconda Prompt or Terminal):**
+
+```bash
+cd /path_to/AI-in-Trading-Workflow-main/AI-in-Trading-Workflow-main/gemini_fullstack_langgraph
+```
+
+Where "path_to" is the address that corresponds to the PC location of your downloaded cloned repository
+
+### Step 3: Set up the Environment
+
+We recommend using a Conda environment for these examples.
+
+**1. Create and activate the environment:**
+From your terminal (or Anaconda Prompt on Windows), run:
+```bash
+conda create --name gemini_fl python=3.12
+conda activate gemini_fl
+```
+
+### Step 4: Set up Your Gemini API Key
 
 Set your Gemini API Key as an environment variable.
 
@@ -109,7 +109,7 @@ set GEMINI_API_KEY="YOUR_ACTUAL_GEMINI_API_KEY"
 export GEMINI_API_KEY="YOUR_ACTUAL_GEMINI_API_KEY"
 ```
 
-### Step 6: Run the Examples
+### Step 5: Run the Examples
 
 Once the environment is fully configured and your API key is set, navigate to the specific example directory you wish to run and follow its `README.md` for detailed execution instructions.
 
