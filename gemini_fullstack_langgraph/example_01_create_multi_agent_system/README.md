@@ -45,8 +45,25 @@ First, clone this repository to your local machine:
 ```bash
 git clone https://github.com/QuantInsti/AI-in-Trading-Workflow.git
 ```
+### 2. Navigate to the Directory
 
-### Step 2: Set up the `gemini-fullstack-langgraph-quickstart` environment
+Change to the example's directory in your Anaconda Prompt or terminal.
+
+For Windows users:
+```bash
+cd \path_to\AI-in-Trading-Workflow\gemini_cli\example_01_create_backtesting_code
+```
+
+For Mac/Linux users:
+```bash
+cd /path_to/AI-in-Trading-Workflow/gemini_cli/example_01_create_backtesting_code
+```
+
+Where "path_to" is the address that corresponds to the PC location of your downloaded cloned repository
+
+Let's have in mind the example address as "A"
+
+### Step 3: Set up the `gemini-fullstack-langgraph-quickstart` environment
 
 Before running this example, you must set up the `gemini-fullstack-langgraph-quickstart` environment. Please follow all the installation and setup instructions provided at the official repository: [https://github.com/google-gemini/gemini-fullstack-langgraph-quickstart](https://github.com/google-gemini/gemini-fullstack-langgraph-quickstart).
 
@@ -54,21 +71,37 @@ Once the environment is fully configured, you can use the Gemini CLI with the li
 
 You have a complete guide on how to set gemini in the main folder of the [gemini-fullstack-langgraph](https://github.com/QuantInsti/AI-in-Trading-Workflow/tree/main/gemini_fullstack_langgraph)
 
-### 2. Navigate to the Directory
+### 4. Navigate to the Directory
 
 Change to the example's directory in your Anaconda Prompt or terminal.
 
-### 3. Set up the Environment
+For Windows users:
+```bash
+cd \path_to\gemini-fullstack-langgraph-quickstart\backend
+```
+
+For Mac/Linux users:
+```bash
+cd /path_to/gemini-fullstack-langgraph-quickstart/backend
+```
+
+Where "path_to" is the address that corresponds to the PC location of your downloaded cloned repository
+
+Let's have in mind the example address as "B"
+
+### 5. Set up the Environment
 
 We recommend using our Conda environment for this example. From your terminal (or Anaconda Prompt on Windows), run:
 ```bash
 conda activate gemini_fl
 ```
 
-### Step 2: Navigate to the Directory
+### Step 6: Copy the repository example in gemini-fullstack-langgraph's backend folder
 
 Change to the example's directory in your Anaconda Prompt or terminal (Where "path_to" is the address that corresponds to the PC location of your downloaded cloned repository
 ).
+
+A and B are the folders' addresses we used previously in step 2 and 4, respectively.
 
 ```bash
 cd /path_to/gemini-fullstack-langgraph-quickstart/backend
@@ -79,22 +112,28 @@ cd /path_to/gemini-fullstack-langgraph-quickstart/backend
    1.1. For Windows:
    
    ```bash
-   xcopy /E /I /H "\path_to\AI-in-Trading-Workflow\gemini_fullstack_langgraph\example_01_create_multi_agent_system" "\path2_to\gemini-fullstack-langgraph-quickstart\backend\example_01_create_multi_agent_system"
+   xcopy /E /I /H "\A" "\B\example_01_create_multi_agent_system"
    ```
    
    1.2. For Mac/Linux
    
    ```bash
-   cp -r "\path_to\AI-in-Trading-Workflow\gemini_fullstack_langgraph\example_01_create_multi_agent_system" "\path2_to\gemini-fullstack-langgraph-quickstart\backend\example_01_create_multi_agent_system"
+   cp -r "/A" "/B/example_01_create_multi_agent_system"
    ```
    
 2. Set the example folder as the current directory
 
+For Windows users:
 ```bash
-cd example_01_create_multi_agent_system
+cd \B\backend\example_01_create_multi_agent_system
 ```
 
-### 4. Set up Your Gemini API Key
+For Mac/Linux users:
+```bash
+cd /B/backend/example_01_create_multi_agent_system
+```
+
+### 7. Set up Your Gemini API Key
 
 Set your Gemini API Key as an environment variable.
 
@@ -110,7 +149,7 @@ set GEMINI_API_KEY="YOUR_ACTUAL_GEMINI_API_KEY"
 export GEMINI_API_KEY="YOUR_ACTUAL_GEMINI_API_KEY"
 ```
 
-### 4. Run the Example
+### 8. Run the Example
 
 Once the prerequisites are met and your API key is set, run the example from your terminal:
 
@@ -120,7 +159,7 @@ python client_example.py
 
 The script will execute the agent workflow, print the final trading recommendation to the console, and save a detailed PDF report in the same directory.
 
-### 4. Building Your Own
+### 9. Building Your Own
 
 The `how_to.md` file contains a tutorial on how to use conversational AI to build a similar system. It provides example prompts and instructions for guiding an AI assistant to write the agent code.
 
