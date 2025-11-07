@@ -51,6 +51,15 @@ os.environ['MPLCONFIGDIR'] = os.getcwd() + "/configs/"
 # This line loads the variables from your .env file (e.g., API keys) into the environment.
 load_dotenv()
 
+
+def _describe_env_key(var_name: str) -> str:
+    """Return a redacted description of an environment variable for debugging."""
+    value = os.getenv(var_name)
+    if not value:
+        return "MISSING"
+    tail = value[-4:]
+    return f"set (len={len(value)}, endswith=***{tail})"
+
 # --- 2. Define the Enhanced Graph State (with Timezone) ---
 # This class defines the structure of our application's state.
 # It's a dictionary that gets passed between all nodes in the graph.
@@ -226,6 +235,13 @@ def get_market_schedule(num_days: int, trader_timezone: str) -> dict:
     """Gets the next N tradable days from the Alpaca API with open/close times."""
     # Print an informational message.
     print(f"INFO: Checking for the next {num_days} tradable days...")
+    print(f"DEBUG: Trader timezone -> {trader_timezone}")
+    print(
+        "DEBUG: Alpaca credentials status -> ID {} | SECRET {}".format(
+            _describe_env_key("APCA_API_KEY_ID"),
+            _describe_env_key("APCA_API_SECRET_KEY")
+        )
+    )
     try:
         # Initialize the Alpaca API client.
         api = tradeapi.REST(os.getenv("APCA_API_KEY_ID"), os.getenv("APCA_API_SECRET_KEY"), base_url='https://paper-api.alpaca.markets')
@@ -267,6 +283,7 @@ def get_market_schedule(num_days: int, trader_timezone: str) -> dict:
     except Exception as e:
         # Print an error message.
         print(f"ERROR: Could not fetch calendar: {e}")
+        print(f"DEBUG: Calendar exception type -> {type(e).__name__}")
         # Return an empty dictionary on failure.
         return {}
 
@@ -427,7 +444,7 @@ def analysis_node(state: AgentState):
         # Store the news results.
         news_by_ticker[ticker] = news
         # Initialize the Gemini LLM.
-        llm = ChatGoogleGenerativeAI(model="gemini-1.5-flash", temperature=0)
+        llm = ChatGoogleGenerativeAI(model="gemini-2.5-pro", temperature=0)
         
         # Create the prompt for the LLM to generate a signal from the news.
         prompt = ChatPromptTemplate.from_messages([
@@ -781,6 +798,7 @@ def engine_loop(tickers: List[str], data_frequency: str, num_observations: int, 
             # If no upcoming market day is found, wait a full day and retry
             if not next_market_open:
                 print("No upcoming trading day found in the schedule. Waiting for 1 day to check again...")
+                print(f"DEBUG: market_schedule keys seen -> {sorted_days}")
                 time.sleep(86400)
                 continue
 
@@ -788,6 +806,7 @@ def engine_loop(tickers: List[str], data_frequency: str, num_observations: int, 
             if local_now < next_market_open:
                 wait_seconds = (next_market_open - local_now).total_seconds()
                 print(f"Next market open is on {next_trading_day.strftime('%A, %B %d')} at {next_market_open.strftime('%H:%M:%S')}. Waiting for {format_seconds(wait_seconds)}...")
+                print(f"DEBUG: Sleeping {wait_seconds:.0f} seconds awaiting market open")
                 time.sleep(wait_seconds)
 
             # --- Main Trading Loop for the Day ---
@@ -828,6 +847,7 @@ def engine_loop(tickers: List[str], data_frequency: str, num_observations: int, 
                 # Wait for the specified interval before the next run.
                 sleep_duration = parse_frequency_to_seconds(data_frequency)
                 print(f"Waiting for {format_seconds(sleep_duration)} until the next run...")
+                print(f"DEBUG: Sleeping {sleep_duration} seconds between iterations")
                 time.sleep(sleep_duration)
 
             # --- End of Day ---
@@ -838,4 +858,3 @@ def engine_loop(tickers: List[str], data_frequency: str, num_observations: int, 
             print(f"An unexpected error occurred in the engine loop: {e}")
             print("Restarting the loop in 60 seconds...")
             time.sleep(60)
-
