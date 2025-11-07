@@ -92,7 +92,7 @@ class IBKRWrapper(EWrapper):
         self.historical_data_lock = threading.Lock()
 
     @iswrapper
-    def error(self, reqId: TickerId, errorCode: int, errorString: str, advancedOrderRejectJson=''):
+    def error(self, reqId: TickerId, errorCode: int, errorString: str, contract=None, advancedOrderRejectJson=''):
         global ib_api_errors
         safe_print(f"Error. Id: {reqId}, Code: {errorCode}, Msg: {errorString}")
         ib_api_errors[reqId] = {"errorCode": errorCode, "errorString": errorString}
