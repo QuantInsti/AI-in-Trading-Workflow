@@ -61,17 +61,7 @@ For Mac/Linux users:
 cd /path_to/AI-in-Trading-Workflow/gemini_cli/example_01_create_backtesting_code
 ```
 
-Where "path_to" is the address that corresponds to the PC location of your downloaded cloned repository
-
-Let's have in mind the example address as "A"
-
-### Step 3: Set up the `gemini-fullstack-langgraph-quickstart` environment
-
-Before running this example, you must set up the `gemini-fullstack-langgraph-quickstart` environment. Please follow all the installation and setup instructions provided at the official repository: [https://github.com/google-gemini/gemini-fullstack-langgraph-quickstart](https://github.com/google-gemini/gemini-fullstack-langgraph-quickstart).
-
-Once the environment is fully configured, you can use the Gemini CLI with the library to generate the `client_example.py` file, as described in the `how_to.md` guide.
-
-You have a complete guide on how to set gemini in the main folder of the [gemini-fullstack-langgraph](https://github.com/QuantInsti/AI-in-Trading-Workflow/tree/main/gemini_fullstack_langgraph)
+### Step 3: Set up the conda environment
 
 **1. Activate our Conda environment:**
 We recommend using our Conda environment for this example. From your terminal (or Anaconda Prompt on Windows), run:
@@ -84,61 +74,6 @@ Install the required Python libraries using the `requirements.txt` file:
 
 ```bash
 pip install -r requirements.txt
-```
-
-### 4. Navigate to the Directory
-
-Change to the example's directory in your Anaconda Prompt or terminal.
-
-For Windows users:
-```bash
-cd \path_to\gemini-fullstack-langgraph-quickstart\backend
-```
-
-For Mac/Linux users:
-```bash
-cd /path_to/gemini-fullstack-langgraph-quickstart/backend
-```
-
-Where "path_to" is the address that corresponds to the PC location of your downloaded cloned repository
-
-Let's have in mind the example address as "B"
-
-### Step 5: Copy the repository example in gemini-fullstack-langgraph's backend folder
-
-Change to the example's directory in your Anaconda Prompt or terminal (Where "path_to" is the address that corresponds to the PC location of your downloaded cloned repository
-).
-
-A and B are the folders' addresses we previously used in step 2 and 4, respectively.
-
-```bash
-cd /path_to/gemini-fullstack-langgraph-quickstart/backend
-```
-
-1. Type the following:
-
-   1.1. For Windows:
-   
-   ```bash
-   xcopy /E /I /H "\A" "\B\example_01_create_multi_agent_system"
-   ```
-   
-   1.2. For Mac/Linux
-   
-   ```bash
-   cp -r "/A" "/B/example_01_create_multi_agent_system"
-   ```
-   
-2. Set the example folder as the current directory
-
-For Windows users:
-```bash
-cd \B\backend\example_01_create_multi_agent_system
-```
-
-For Mac/Linux users:
-```bash
-cd /B/backend/example_01_create_multi_agent_system
 ```
 
 ### 6. Set up Your Gemini API Key
