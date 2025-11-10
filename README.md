@@ -34,7 +34,7 @@ This repository is organized into modules based on the AI tools and platforms th
     - **Developer Guides**: Practical examples for using the Gemini CLI for development tasks.
 
 ### 2. Gemini FullStack LangChain
-- **Location**: [gemini_full_stack_langchain/](https://github.com/QuantInsti/AI-in-Trading-Workflow/tree/main/gemini_fullstack_langgraph)
+- **Location**: [gemini_full_stack_langgraph/](https://github.com/QuantInsti/AI-in-Trading-Workflow/tree/main/gemini_fullstack_langgraph)
 - **Description**: A detailed, step-by-step tutorial on coding the multi-agent news analysis system from scratch, which provides the foundation for the `AI_strategy.py` file in our setups to trade live with LLMs!
 
 ### 3. LLMs
