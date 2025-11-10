@@ -47,7 +47,7 @@ First, clone this repository to your local machine:
 ```bash
 git clone https://github.com/QuantInsti/AI-in-Trading-Workflow.git
 ```
-### 2. Navigate to the Directory
+### Step 2. Navigate to the Directory
 
 Change to the example's directory in your Anaconda Prompt or terminal.
 
@@ -76,7 +76,7 @@ Install the required Python libraries using the `requirements.txt` file:
 pip install -r requirements.txt
 ```
 
-### 6. Set up Your Gemini API Key
+### Step 4. Set up Your Gemini API Key
 
 Set your Gemini API Key as an environment variable.
 
@@ -92,7 +92,7 @@ set GEMINI_API_KEY="YOUR_ACTUAL_GEMINI_API_KEY"
 export GEMINI_API_KEY="YOUR_ACTUAL_GEMINI_API_KEY"
 ```
 
-### 7. Run the Example
+### Step 5. Run the Example
 
 Once the prerequisites are met and your API key is set, run the example from your terminal:
 
@@ -102,7 +102,7 @@ python client_example.py
 
 The script will execute the agent workflow, print the final trading recommendation to the console, and save a detailed PDF report in the same directory.
 
-### 8. Building Your Own
+### Step 6. Building Your Own
 
 The `how_to.md` file contains a tutorial on how to use conversational AI to build a similar system. It provides example prompts and instructions for guiding an AI assistant to write the agent code.
 
