@@ -36,8 +36,8 @@ def get_news_gathering_prompt(asset_name, exchange, previous_period):
 def get_sentiment_analysis_prompt(news_summaries):
     """Generates the prompt for the sentiment analysis agent."""
     return (
-        "Based on the following news summaries, provide a sentiment score from -1 (very bearish) to +1 (very bullish). "
-        f"Output only the numerical score. The news summaries are:\n\n{news_summaries}"
+        "Based on the following news (including titles, authors, and summaries), provide a sentiment score from -1 (very bearish) to +1 (very bullish). "
+        f"Focus on the summary to determine the sentiment. Output only the numerical score. The news is:\n\n{news_summaries}"
     )
 
 def get_trading_strategy_prompt(asset_name, sentiment_score, volatility_index):
