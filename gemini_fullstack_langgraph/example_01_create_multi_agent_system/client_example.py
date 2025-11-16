@@ -18,7 +18,7 @@ ASSET_NAME = 'TSLA'  # Asset symbol to research (e.g., 'AAPL', 'GOOG', 'TSLA')
 EXCHANGE = 'NASDAQ'   # Exchange where the asset is traded (e.g., 'NASDAQ', 'NYSE')
 INITIAL_QUERIES = 1
 MAX_LOOPS = 1
-REASONING_MODEL = "gemini-2.5-pro" # Update this model as per Google's available models
+REASONING_MODEL = "gemini-2.0-flash" # Update this model as per Google's available models
 previous_period = dt.datetime.now() - dt.timedelta(minutes=3)
 
 
