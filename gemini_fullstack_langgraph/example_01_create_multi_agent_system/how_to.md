@@ -55,39 +55,33 @@ Once the CLI has the context, provide a detailed prompt to generate the
 
 1.  > **Configuration:** At the top of the script, include a
     > configuration section for parameters like `ASSET_NAME`,
-    > `EXCHANGE`, `REASONING_MODEL`, etc.
+    > `EXCHANGE`, `INITIAL_QUERIES`, `MAX_LOOPS`, and `REASONING_MODEL`.
 
-2.  > **Agent Classes:** Define Python classes for the four agents:
+2.  > **Dynamic Prompts:** Create functions that generate prompts dynamically. For example, `get_news_gathering_prompt(asset_name, exchange)` should return a formatted string with the proper instructions. Create similar functions for the sentiment analysis and trading strategy agents.
 
-    - `NewsGathererAgent`: Takes an asset and exchange to find recent
-      news.
-    - `SentimentAnalyzerAgent`: Takes news summaries and returns a
-      sentiment score from -1 to +1.
-    - `MarketDataFetcher`: Fetches the CBOE Volatility Index (VIX) using
-      the `yfinance` library.
-    - `TradingStrategyAgent`: Takes the sentiment score and VIX to
-      produce a final JSON recommendation containing an `action`,
-      `confidence`, and `reasoning`.
+3.  > **Agent Classes:** Define Python classes for the agents. Each agent class should have an `execute` method.
+    > - `NewsGathererAgent`: Takes an asset and exchange, uses the dynamic prompt, invokes the graph, and returns the news summaries.
+    - `SentimentAnalyzerAgent`: Takes news summaries, handles cases where no news is found, invokes the graph, and parses the sentiment score. It should include robust error handling to parse a float from the model's response, including normalizing scores that might be on a 0-100 scale.
+    - `MarketDataFetcher`: A class (not an agent that calls the graph) that fetches the CBOE Volatility Index (VIX) using the `yfinance` library. It should handle cases where the data might not be available.
+    - `TradingStrategyAgent`: Takes the sentiment score and VIX, invokes the graph, and parses the final JSON recommendation. It must handle potential JSON decoding errors and provide a default 'HOLD' recommendation if parsing fails.
 
-3.  > **PDF Report Generation:** Add a function that generates a PDF
-    > report summarizing the entire analysis. The report should include:
-    > - An executive summary of the final recommendation.
-    > - The input parameters used (asset, sentiment, VIX).
-    > - A "chain of thought" section detailing the findings of each agent.
-    > - A disclaimer.
+4.  > **Report Generation:**
+    > - Create a function `generate_markdown_report` that takes all the data (asset name, recommendation, news, scores) and compiles a detailed Markdown report.
+    > - Create a second function `generate_pdf_from_cleaned_content` that takes the Markdown content, cleans it (e.g., removes links), and uses the `reportlab` library to generate a professional-looking PDF report.
 
-4.  > **Agent Logic:** The agents will be responsible for creating the correct prompts and processing the results. The `gemini-fullstack-langchain` library handles the `graph.invoke()` method.
+5.  > **Helper Functions:**
+    > - Include a helper function `extract_last_message_content` to safely get content from the last message in the graph's result.
+    > - Add functions like `remove_links` and `clean_news_summaries` to process the text before generating the final report.
 
-5.  > **Main Function:** Include a `main()` function that:
+6.  > **Main Function:** Include a `main()` function that:
+    > - Initializes all the agent classes.
+    - Executes them in the correct order: News -> Sentiment -> VIX -> Strategy.
+    - Cleans the news summaries before passing them to the sentiment agent.
+    - Calls the functions to generate the Markdown and PDF reports, and then deletes the intermediate Markdown file.
+    - Prints the final recommendation to the console and includes example downstream logic (e.g., "Triggering order placement logic.").
+    - Records and prints the total time taken for the agent workflow to complete.
 
-    - Initializes all the agents.
-    - Executes them in the correct order: News -> Sentiment -> VIX ->
-      Strategy.
-    - Calls the function to generate the PDF report.
-    - Prints the final recommendation to the console.
-
-6.  > **Imports:** Include all necessary imports, like `datetime`,
-    > `yfinance`, `json`, and the `reportlab` library for PDF generation.
+7.  > **Imports:** Include all necessary imports, like `datetime`, `yfinance`, `json`, `os`, `re`, and the `reportlab` library for PDF generation.
 
 > Please generate the complete code for this `client_example.py` file.
 
