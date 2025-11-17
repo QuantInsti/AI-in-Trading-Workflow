@@ -61,9 +61,9 @@ Once the CLI has the context, provide a detailed prompt to generate the
 
 3.  > **Agent Classes:** Define Python classes for the agents. Each agent class should have an `execute` method.
     > - `NewsGathererAgent`: Takes an asset and exchange, uses the dynamic prompt, invokes the graph, and returns the news summaries.
-    - `SentimentAnalyzerAgent`: Takes news summaries, handles cases where no news is found, invokes the graph, and parses the sentiment score. It should include robust error handling to parse a float from the model's response, including normalizing scores that might be on a 0-100 scale.
-    - `MarketDataFetcher`: A class (not an agent that calls the graph) that fetches the CBOE Volatility Index (VIX) using the `yfinance` library. It should handle cases where the data might not be available.
-    - `TradingStrategyAgent`: Takes the sentiment score and VIX, invokes the graph, and parses the final JSON recommendation. It must handle potential JSON decoding errors and provide a default 'HOLD' recommendation if parsing fails.
+    > - `SentimentAnalyzerAgent`: Takes news summaries, handles cases where no news is found, invokes the graph, and parses the sentiment score. It should include robust error handling to parse a float from the model's response, including normalizing scores that might be on a 0-100 scale.
+    > - `MarketDataFetcher`: A class (not an agent that calls the graph) that fetches the CBOE Volatility Index (VIX) using the `yfinance` library. It should handle cases where the data might not be available.
+    > - `TradingStrategyAgent`: Takes the sentiment score and VIX, invokes the graph, and parses the final JSON recommendation. It must handle potential JSON decoding errors and provide a default 'HOLD' recommendation if parsing fails.
 
 4.  > **Report Generation:**
     > - Create a function `generate_markdown_report` that takes all the data (asset name, recommendation, news, scores) and compiles a detailed Markdown report.
