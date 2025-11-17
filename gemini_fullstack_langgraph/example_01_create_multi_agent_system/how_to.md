@@ -75,11 +75,11 @@ Once the CLI has the context, provide a detailed prompt to generate the
 
 6.  > **Main Function:** Include a `main()` function that:
     > - Initializes all the agent classes.
-    - Executes them in the correct order: News -> Sentiment -> VIX -> Strategy.
-    - Cleans the news summaries before passing them to the sentiment agent.
-    - Calls the functions to generate the Markdown and PDF reports, and then deletes the intermediate Markdown file.
-    - Prints the final recommendation to the console and includes example downstream logic (e.g., "Triggering order placement logic.").
-    - Records and prints the total time taken for the agent workflow to complete.
+    > - Executes them in the correct order: News -> Sentiment -> VIX -> Strategy.
+    > - Cleans the news summaries before passing them to the sentiment agent.
+    > - Calls the functions to generate the Markdown and PDF reports, and then deletes the intermediate Markdown file.
+    > - Prints the final recommendation to the console and includes example downstream logic (e.g., "Triggering order placement logic.").
+    > - Records and prints the total time taken for the agent workflow to complete.
 
 7.  > **Imports:** Include all necessary imports, like `datetime`, `yfinance`, `json`, `os`, `re`, and the `reportlab` library for PDF generation.
 
