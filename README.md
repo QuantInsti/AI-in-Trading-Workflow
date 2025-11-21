@@ -8,7 +8,7 @@ Our repository for demonstrating how to build and deploy sophisticated algorithm
 ---
 
 # Authors
-- Lead Author: [José Carlos Gonzáles Tanaka](https://www.linkedin.com/in/jose-carlos-gonzales-tanaka/)
+- Author: [José Carlos Gonzáles Tanaka](https://www.linkedin.com/in/jose-carlos-gonzales-tanaka/)
 - The EPAT Content Team is responsible for the maintenance and update of this repository
 
 ---
