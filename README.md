@@ -7,6 +7,12 @@
 Our repository for demonstrating how to build and deploy sophisticated algorithmic trading solutions using modern AI, from multi-agent systems to production-ready execution frameworks.
 ---
 
+# Authors
+- Lead Author: [José Carlos Gonzáles Tanaka](https://www.linkedin.com/in/jose-carlos-gonzales-tanaka/)
+- The EPAT Content Team is responsible for the maintenance and update of this repository
+
+---
+
 ## Objective
 
 The primary objective of this repository is to provide a concrete, end-to-end example of using modern AI agents for trading. It connects the theoretical application of LLMs to a practical, executable trading bot.
