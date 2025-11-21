@@ -7,9 +7,9 @@
 Our repository for demonstrating how to build and deploy sophisticated algorithmic trading solutions using modern AI, from multi-agent systems to production-ready execution frameworks.
 ---
 
-# Authors
+## Contributors
 - Author: [José Carlos Gonzáles Tanaka](https://www.linkedin.com/in/jose-carlos-gonzales-tanaka/)
-- The EPAT Content Team is responsible for the maintenance and update of this repository
+- QuantInsti's EPAT Content Team is responsible for maintaining and contributing to this repository.
 
 ---
 
