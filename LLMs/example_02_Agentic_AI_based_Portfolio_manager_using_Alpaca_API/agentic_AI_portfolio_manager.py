@@ -1,6 +1,31 @@
 # --- Import necessary libraries ---
 # os: For interacting with the operating system, used here to get environment variables.
 import os
+import ssl
+import sys
+import http.client
+import urllib.parse
+import urllib.request
+import urllib.error
+import urllib.response
+import urllib.robotparser
+
+# Work around urllib3<1.25 vendored-six import on Python 3.12.
+try:
+    import six
+    sys.modules.setdefault("urllib3.packages.six", six)
+    sys.modules.setdefault("urllib3.packages.six.moves", six.moves)
+    sys.modules.setdefault("urllib3.packages.six.moves.http_client", http.client)
+    sys.modules.setdefault("urllib3.packages.six.moves.urllib", six.moves.urllib)
+    sys.modules.setdefault("urllib3.packages.six.moves.urllib.parse", urllib.parse)
+    sys.modules.setdefault("urllib3.packages.six.moves.urllib.request", urllib.request)
+    sys.modules.setdefault("urllib3.packages.six.moves.urllib.error", urllib.error)
+    sys.modules.setdefault("urllib3.packages.six.moves.urllib.response", urllib.response)
+    sys.modules.setdefault("urllib3.packages.six.moves.urllib.robotparser", urllib.robotparser)
+except Exception:
+    pass
+
+import requests
 # smtplib: For sending emails using the Simple Mail Transfer Protocol.
 import smtplib
 # json: For working with JSON data, used here to format search results.
@@ -28,9 +53,27 @@ import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
 
 # alpaca_trade_api: The official Python library for the Alpaca trading API.
+# Patch for older alpaca-trade-api using deprecated ssl.PROTOCOL_SSLv23 on Python 3.12.
+# Backfill deprecated ssl.PROTOCOL_SSLv23 for urllib3 <1.25 on Python 3.12+.
+if not hasattr(ssl, "PROTOCOL_SSLv23"):
+    ssl.PROTOCOL_SSLv23 = getattr(ssl, "PROTOCOL_TLS_CLIENT", getattr(ssl, "PROTOCOL_TLS", None))
+
+try:
+    import urllib3.util.ssl_ as urllib3_ssl
+    if not hasattr(urllib3_ssl, "PROTOCOL_SSLv23") and hasattr(ssl, "PROTOCOL_SSLv23"):
+        urllib3_ssl.PROTOCOL_SSLv23 = ssl.PROTOCOL_SSLv23
+    # Ensure SNI stays enabled even if urllib3 imported before ssl.PROTOCOL_SSLv23 existed.
+    urllib3_ssl.HAS_SNI = True
+except Exception:
+    pass
+
 import alpaca_trade_api as tradeapi
 # TimeFrame, TimeFrameUnit: Enums from the Alpaca library to specify the data frequency.
-from alpaca_trade_api.rest import TimeFrame, TimeFrameUnit
+try:
+    from alpaca_trade_api.rest import TimeFrame, TimeFrameUnit
+except Exception:
+    TimeFrame = None
+    TimeFrameUnit = None
 
 # ChatPromptTemplate: For creating structured prompts for the language model.
 from langchain_core.prompts import ChatPromptTemplate
@@ -300,37 +343,98 @@ def fetch_historical_data(ticker: str, num_observations: int, data_frequency: st
         # Extract the amount and unit, defaulting to 1 if not specified.
         amount, unit_str = (1, data_frequency) if not match else (int(match.groups()[0]), match.groups()[1])
         
-        # Map the string unit to the Alpaca TimeFrameUnit enum.
-        unit_map = {'min': TimeFrameUnit.Minute, 'h': TimeFrameUnit.Hour, 'd': TimeFrameUnit.Day}
-        unit = next((u for s, u in unit_map.items() if s in unit_str.lower()), None)
-        # Raise an error if the unit is invalid.
-        if not unit: raise ValueError(f"Invalid time unit: {unit_str}")
-
-        # Create the TimeFrame object required by the Alpaca API.
-        timeframe = TimeFrame(amount, unit)
         # Get the current time in UTC to ensure a consistent reference point.
         today = datetime.now(pytz.utc)
         # Calculate a buffered number of observations to fetch to account for non-trading periods.
         buffered_obs = int(num_observations * 1.5)
-        
-        # Create a mapping to calculate the appropriate timedelta for the data fetch.
-        delta_map = {TimeFrameUnit.Day: timedelta(days=buffered_obs), TimeFrameUnit.Hour: timedelta(hours=amount * buffered_obs), TimeFrameUnit.Minute: timedelta(minutes=amount * buffered_obs)}
-        # Calculate the start date for the data fetch.
-        start_date = today - delta_map[unit]
-        
-        # Call the Alpaca API to get the historical bars, with adjustment for splits and dividends.
-        bars = api.get_bars(
-            ticker, 
-            timeframe,
-            start=start_date.strftime('%Y-%m-%d'), 
-            end=today.strftime('%Y-%m-%d'),
-            adjustment='all', # This is the key change for adjusted data
-            feed='iex' # Use IEX data feed for free stock data
-        ).df
+
+        if TimeFrameUnit is None or TimeFrame is None:
+            # Fallback for older alpaca-trade-api versions without TimeFrame enums.
+            unit_str_lower = unit_str.lower()
+            if "min" in unit_str_lower:
+                unit_suffix = "Min"
+            elif "h" in unit_str_lower:
+                unit_suffix = "Hour"
+            elif "d" in unit_str_lower:
+                unit_suffix = "Day"
+            else:
+                raise ValueError(f"Invalid time unit: {unit_str}")
+
+            timeframe = f"{amount}{unit_suffix}"
+            start_date = today - timedelta(minutes=amount * buffered_obs if unit_suffix == "Min" else 0,
+                                           hours=amount * buffered_obs if unit_suffix == "Hour" else 0,
+                                           days=buffered_obs if unit_suffix == "Day" else 0)
+
+            # Use Alpaca Data API v2 directly to avoid deprecated v1 barset endpoints.
+            headers = {
+                "APCA-API-KEY-ID": os.getenv("APCA_API_KEY_ID", ""),
+                "APCA-API-SECRET-KEY": os.getenv("APCA_API_SECRET_KEY", ""),
+            }
+            params = {
+                "symbols": ticker,
+                "timeframe": timeframe,
+                "start": start_date.isoformat(),
+                "end": today.isoformat(),
+                "limit": buffered_obs,
+                "adjustment": "all",
+                "feed": "iex",
+            }
+            resp = requests.get("https://data.alpaca.markets/v2/stocks/bars", headers=headers, params=params, timeout=30)
+            resp.raise_for_status()
+            data = resp.json()
+            rows = data.get("bars", {})
+            if isinstance(rows, dict):
+                rows = rows.get(ticker, [])
+            bars = pd.DataFrame(rows)
+            if bars.empty:
+                return pd.DataFrame()
+            bars = bars.rename(
+                columns={
+                    "t": "timestamp",
+                    "o": "open",
+                    "h": "high",
+                    "l": "low",
+                    "c": "close",
+                    "v": "volume",
+                    "n": "trade_count",
+                    "vw": "vwap",
+                }
+            )
+            bars["timestamp"] = pd.to_datetime(bars["timestamp"], utc=True)
+            bars = bars.set_index("timestamp")
+        else:
+            # Map the string unit to the Alpaca TimeFrameUnit enum.
+            unit_map = {'min': TimeFrameUnit.Minute, 'h': TimeFrameUnit.Hour, 'd': TimeFrameUnit.Day}
+            unit = next((u for s, u in unit_map.items() if s in unit_str.lower()), None)
+            # Raise an error if the unit is invalid.
+            if not unit:
+                raise ValueError(f"Invalid time unit: {unit_str}")
+
+            # Create the TimeFrame object required by the Alpaca API.
+            timeframe = TimeFrame(amount, unit)
+            # Create a mapping to calculate the appropriate timedelta for the data fetch.
+            delta_map = {
+                TimeFrameUnit.Day: timedelta(days=buffered_obs),
+                TimeFrameUnit.Hour: timedelta(hours=amount * buffered_obs),
+                TimeFrameUnit.Minute: timedelta(minutes=amount * buffered_obs),
+            }
+            # Calculate the start date for the data fetch.
+            start_date = today - delta_map[unit]
+
+            # Call the Alpaca API to get the historical bars, with adjustment for splits and dividends.
+            bars = api.get_bars(
+                ticker,
+                timeframe,
+                start=start_date.strftime('%Y-%m-%d'),
+                end=today.strftime('%Y-%m-%d'),
+                adjustment='all',  # This is the key change for adjusted data
+                feed='iex',  # Use IEX data feed for free stock data
+            ).df
         
         # Convert the timestamp index from UTC to the trader's local timezone.
         # Then, remove the timezone information to make the datetime object "naive", which is easier for some libraries.
-        bars.index = bars.index.tz_convert(trader_timezone).tz_localize(None)
+        if hasattr(bars.index, "tz") and bars.index.tz is not None:
+            bars.index = bars.index.tz_convert(trader_timezone).tz_localize(None)
         
         # Return only the requested number of recent observations.
         return bars.tail(num_observations)
@@ -444,7 +548,7 @@ def analysis_node(state: AgentState):
         # Store the news results.
         news_by_ticker[ticker] = news
         # Initialize the Gemini LLM.
-        llm = ChatGoogleGenerativeAI(model="gemini-2.5-pro", temperature=0)
+        llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash", temperature=0)
         
         # Create the prompt for the LLM to generate a signal from the news.
         prompt = ChatPromptTemplate.from_messages([
