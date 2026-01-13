@@ -310,10 +310,13 @@ def generate_pdf_from_cleaned_content(pdf_file_name, content):
 
 
 def remove_links(text):
-    """Removes markdown-style links from a string."""
-    # This regex is more robust for handling various markdown link formats
+    """Removes markdown-style links and raw URLs from a string."""
     import re
-    return re.sub(r'\[([^\]]+)\]\([^\)]+\)', r'\1', text)
+    # Replace markdown links, allowing whitespace/newlines between parts.
+    text = re.sub(r'\[([^\]]+)\]\s*\((.*?)\)', r'\1', text, flags=re.DOTALL)
+    # Remove bare URLs that may remain after model-generated line wrapping.
+    text = re.sub(r'https?://\S+', '', text)
+    return text
 
 def clean_news_summaries(news_summaries_text):
     """Removes specific conversational messages from news summaries."""
