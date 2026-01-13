@@ -1,6 +1,11 @@
 import datetime as dt
 import yfinance as yf
 import json
+import os
+from reportlab.lib.pagesizes import letter
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, PageBreak
+from reportlab.lib.styles import getSampleStyleSheet
+from reportlab.lib.units import inch
 
 # In a real deployment, you would have the 'graph' object from the LangGraph setup.
 # This script is now structured to use it directly.
@@ -14,7 +19,7 @@ ASSET_NAME = 'TSLA'  # Asset symbol to research (e.g., 'AAPL', 'GOOG', 'TSLA')
 EXCHANGE = 'NASDAQ'   # Exchange where the asset is traded (e.g., 'NASDAQ', 'NYSE')
 INITIAL_QUERIES = 1
 MAX_LOOPS = 1
-REASONING_MODEL = "gemini-2.5-pro"
+REASONING_MODEL = "gemini-2.0-flash" # Update this model as per Google's available models
 previous_period = dt.datetime.now() - dt.timedelta(minutes=3)
 
 
@@ -26,14 +31,15 @@ def get_news_gathering_prompt(asset_name, exchange, previous_period):
     return (
         f"Research the latest news from {previous_period} to now only. "
         f"Focus on news related to the asset '{asset_name}' on the {exchange} exchange. "
+        "For each news article, provide the title and the author. If the author is not available, state 'Author: N/A'. "
         "Search for news relevant to forming an opinion on how bearish or bullish the asset is."
     )
 
 def get_sentiment_analysis_prompt(news_summaries):
     """Generates the prompt for the sentiment analysis agent."""
     return (
-        "Based on the following news summaries, provide a sentiment score from -1 (very bearish) to +1 (very bullish). "
-        f"Output only the numerical score. The news summaries are:\n\n{news_summaries}"
+        f"Based on the following news (including titles, authors, and summaries), provide a sentiment score from -1 (very bearish) to +1 (very bullish). "
+        f"Focus on the summary to determine the sentiment. Ignore any links or URLs in the text. Output only the numerical score. For example, if the sentiment is neutral, you should output `0.0`. Remember, the score must be between -1.0 and 1.0. The news is:\n\n{news_summaries}"
     )
 
 def get_trading_strategy_prompt(asset_name, sentiment_score, volatility_index):
@@ -46,8 +52,8 @@ def get_trading_strategy_prompt(asset_name, sentiment_score, volatility_index):
         "'action' (string: 'BUY', 'SELL', or 'HOLD'), "
         "'confidence' (float: 0.0 to 1.0), and "
         "'reasoning' (string: your brief reasoning).\n\n"
-        f"Sentiment Score: {sentiment_score}\n"
-        f"Volatility Index (VIX): {volatility_index}"
+        f"Sentiment Score: {sentiment_score:.2f}\n"
+        f"Volatility Index (VIX): {volatility_index:.2f}"
     )
 
 
@@ -108,9 +114,25 @@ class SentimentAnalyzerAgent:
         result = self.graph.invoke(state)
         sentiment_score_str = extract_last_message_content(result, "0.0")
         try:
-            sentiment_score = float(sentiment_score_str)
-            print(f"Sentiment Score: {sentiment_score}")
-            return sentiment_score
+            # Use regex to find the first floating point number in the string
+            import re
+            match = re.search(r"[-+]?\d*\.\d+|\d+", sentiment_score_str)
+            if match:
+                sentiment_score = float(match.group())
+                # Normalize sentiment score if it's outside the -1 to +1 range, assuming a 0-100 scale
+                if sentiment_score > 1.0 or sentiment_score < -1.0:
+                    if sentiment_score >= 0 and sentiment_score <= 100:
+                        # Assuming a 0-100 scale, convert to -1 to +1
+                        sentiment_score = (sentiment_score / 50.0) - 1.0
+                    else:
+                        print(f"Warning: Sentiment score {sentiment_score} is outside expected -1 to +1 range and not a 0-100 scale. Defaulting to 0.0.")
+                        sentiment_score = 0.0
+
+                print(f"Sentiment Score: {sentiment_score}")
+                return sentiment_score
+            else:
+                print(f"Warning: Could not parse sentiment score from '{sentiment_score_str}'. Defaulting to 0.0.")
+                return 0.0
         except (ValueError, TypeError):
             print(f"Warning: Could not parse sentiment score '{sentiment_score_str}'. Defaulting to 0.0.")
             return 0.0
@@ -196,6 +218,114 @@ class TradingStrategyAgent:
             return default_response
 
 
+def generate_markdown_report(asset_name, exchange, final_recommendation, news_summaries, sentiment_score, vix_index):
+    """Generates a Markdown report summarizing the agent's analysis."""
+    
+    timestamp = dt.datetime.now().strftime("%Y%m%d_%H%M%S")
+    md_file_name = f"{asset_name}_trading_report_{timestamp}.md"
+    pdf_file_name = f"{asset_name}_trading_report_{timestamp}.pdf"
+
+    # --- Construct Markdown Content ---
+    report_content = f"# Trading Analysis Report: {asset_name}\n\n"
+    report_content += f"**Report Generated:** {dt.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n\n"
+    
+    report_content += "## Executive Summary\n"
+    summary_text = (
+        f"The multi-agent system recommends a '{final_recommendation.get('action', 'N/A')}' "
+        f"action for {asset_name} with a confidence score of {final_recommendation.get('confidence', 0.0):.2f}. "
+        f"Reasoning: {final_recommendation.get('reasoning', 'No reasoning provided.')}"
+    )
+    report_content += f"{summary_text}\n\n"
+
+    report_content += "## Input Parameters\n"
+    report_content += f"**Asset:** {asset_name}\n"
+    report_content += f"**Exchange:** {exchange}\n"
+    report_content += f"**Sentiment Score:** {sentiment_score:.2f}\n"
+    report_content += f"**Volatility Index (VIX):** {vix_index:.2f}\n\n"
+
+    report_content += "## Agent Contributions (Chain of Thought)\n"
+    
+    report_content += "### 1. News Gatherer Agent\n"
+    report_content += "**Summary of Findings:**\n"
+    report_content += f"{news_summaries}\n\n"
+
+    report_content += "### 2. Sentiment Analyzer Agent\n"
+    report_content += f"**Sentiment Score:** {sentiment_score:.2f}\n\n"
+
+    report_content += "### 3. Market Data Fetcher\n"
+    report_content += f"**Latest VIX Close:** {vix_index:.2f}\n\n"
+
+    report_content += "### 4. Trading Strategy Agent\n"
+    report_content += "**Final Recommendation:**\n"
+    report_content += f"**Action:** {final_recommendation.get('action', 'N/A')}\n"
+    report_content += f"**Confidence:** {final_recommendation.get('confidence', 0.0):.2f}\n"
+    report_content += f"**Reasoning:** {final_recommendation.get('reasoning', 'N/A')}\n\n"
+
+    report_content += "---\n"
+    report_content += "## Disclaimer\n"
+    disclaimer_text = (
+        "This report is generated by an AI-driven multi-agent system and is for informational purposes only. "
+        "It is not financial advice. Trading financial markets involves substantial risk. "
+        "Always conduct your own research and risk assessment before making any investment decisions."
+    )
+    report_content += f"{disclaimer_text}\n"
+
+    with open(md_file_name, 'w') as f:
+        f.write(report_content)
+        
+    print(f"\n--- Markdown Report Generated ---")
+    print(f"Successfully saved trading analysis to '{md_file_name}'")
+    
+    return md_file_name, pdf_file_name
+
+
+def generate_pdf_from_cleaned_content(pdf_file_name, content):
+    """Generates a PDF report from cleaned markdown content."""
+    import re
+    
+    doc = SimpleDocTemplate(pdf_file_name, pagesize=letter)
+    styles = getSampleStyleSheet()
+    story = []
+
+    lines = content.split('\n')
+    for line in lines:
+        # BOLD conversion
+        line = re.sub(r'\*\*(.*?)\*\*', r'<b>\1</b>', line)
+
+        if line.startswith('# '):
+            story.append(Paragraph(line[2:], styles['h1']))
+        elif line.startswith('## '):
+            story.append(Paragraph(line[3:], styles['h2']))
+        elif line.startswith('### '):
+            story.append(Paragraph(line[4:], styles['h3']))
+        elif line.strip() == '---':
+            story.append(PageBreak())
+        else:
+            story.append(Paragraph(line, styles['BodyText']))
+        story.append(Spacer(1, 0.1*inch))
+
+    doc.build(story)
+    print(f"\n--- PDF Report Generated ---")
+    print(f"Successfully saved trading analysis to '{pdf_file_name}'")
+
+
+def remove_links(text):
+    """Removes markdown-style links and raw URLs from a string."""
+    import re
+    # Replace markdown links, allowing whitespace/newlines between parts.
+    text = re.sub(r'\[([^\]]+)\]\s*\((.*?)\)', r'\1', text, flags=re.DOTALL)
+    # Remove bare URLs that may remain after model-generated line wrapping.
+    text = re.sub(r'https?://\S+', '', text)
+    return text
+
+def clean_news_summaries(news_summaries_text):
+    """Removes specific conversational messages from news summaries."""
+    import re
+    # Regex to match the specific sentence about missing titles and authors
+    pattern = r"Titles and Authors:Unfortunately, the summaries provided do not consistently include the titles and authors of the news\narticles. Where available, the source is cited\." 
+    cleaned_text = re.sub(pattern, "", news_summaries_text, flags=re.IGNORECASE)
+    return cleaned_text.strip()
+
 def main():
     """Run the multi-agent system using the configuration set at the top of the file."""
     if not graph:
@@ -213,6 +343,7 @@ def main():
 
     # --- Execute the multi-step trading analysis ---
     news_summaries = news_agent.execute(ASSET_NAME, EXCHANGE)
+    news_summaries = clean_news_summaries(news_summaries)
     sentiment_score = sentiment_agent.execute(news_summaries)
     vix_index = market_data_fetcher.get_vix_index()
     final_recommendation = strategy_agent.execute(ASSET_NAME, sentiment_score, vix_index)
@@ -227,6 +358,19 @@ def main():
     print(f"Confidence: {confidence}")
     print(f"Reasoning: {reasoning}")
     
+    # --- Generate and save the PDF report ---
+    if vix_index is not None and sentiment_score is not None:
+        md_file, pdf_file = generate_markdown_report(ASSET_NAME, EXCHANGE, final_recommendation, news_summaries, sentiment_score, vix_index)
+        
+        with open(md_file, 'r') as f:
+            content = f.read()
+            
+        cleaned_content = remove_links(content)
+        
+        generate_pdf_from_cleaned_content(pdf_file, cleaned_content)
+        
+        os.remove(md_file)
+
     # You can now use these variables for any downstream logic,
     # such as placing an order or logging the decision.
     print("\n--- Example of Downstream Logic ---")
